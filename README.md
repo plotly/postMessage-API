@@ -92,7 +92,7 @@ The Embed API communicates with embedded graphs via a *task* identifier. Support
 * **ping** - returns "pong" if the graph is loaded, just used to tell when the listener is active
 * **redraw** - forces a redraw of the graph
 
-### task: <a name="relayout"></a>restyle
+<a name="restyle"></a># task: *restyle*
 
 The restyle task changes attributes of the graph data - colors, type (ie bars versus points, scatter plot versus histogram), and the even values of the data. See **A bit about Plotly's JSON representation** above for how to pinpoint these attributes.
 
@@ -116,7 +116,7 @@ plot.postMessage(
         'https://plot.ly');
 ```
 
-### task: <a name="relayout"></a>relayout
+<a name="relayout"></a># task: *relayout*
 
 The relayout task changes the size, margins, and axes of a graph. See **A bit about Plotly's JSON representation** above for how to pinpoint these attributes.
 
@@ -135,7 +135,7 @@ plot.postMessage(
         'https://plot.ly');
 ```
 
-### task: <a name="hover"></a>hover
+<a name="hover"></a># task: *hover*
 
 Force a hover tag to display over a specific x,y point on the graph.
 This example forces a hover tag to display at point (1,2) on the graph.
