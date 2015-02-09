@@ -3,7 +3,7 @@
 
 ## Overview
 
-Plotly is making its JavaScipt API to Plotly graph embeds available and documented for  users. This API can be used build custom controls that change anything about an embedded Plotly graph - the graph type, colors, data, etc. 
+Plotly is making its JavaScipt API to Plotly graph embeds available and documented for users. This API can be used to build custom controls that change anything about an embedded Plotly graph - the graph type, colors, data, etc - *after* the graph is embedded in a webpage. 
 
 The Embed API is the basis for communication between Plotly graphs and [IPython notebook widgets](http://moderndata.plot.ly/widgets-in-ipython-notebook-and-plotly/), as well as  planned support for [RStudio's Shiny](http://shiny.rstudio.com/) product.
 
@@ -17,59 +17,9 @@ Plotly encodes all graphs into a text-based JSON format from which the graph is 
 
 For example, the JSON representation of the the graph with URL [https://plot.ly/~PlotBot/80](https://plot.ly/~PlotBot/80) is [https://plot.ly/~PlotBot/80.json](https://plot.ly/~PlotBot/80.json).
 
-Here's the JSON representation for an even simpler graph, [https://plot.ly/~PlotBot/201](https://plot.ly/~PlotBot/201):
+You will need to reference the JSON representation in order to pinpoint the aspects of the graph you want to modify through the Embed API.
 
-```
-{
-    "data": [
-        {
-            "x": [
-                1, 
-                2, 
-                3, 
-                4
-            ], 
-            "y": [
-                0, 
-                2, 
-                3, 
-                5
-            ], 
-            "fill": "tozeroy", 
-            "type": "scatter"
-        }, 
-        {
-            "x": [
-                1, 
-                2, 
-                3, 
-                4
-            ], 
-            "y": [
-                3, 
-                5, 
-                1, 
-                7
-            ], 
-            "fill": "tonexty", 
-            "type": "scatter"
-        }
-    ], 
-    "layout": {
-        "autosize": false, 
-        "width": 500, 
-        "height": 500, 
-        "margin": {
-            "l": 65, 
-            "r": 50, 
-            "b": 65, 
-            "t": 65
-        }
-    }
-}
-```
-
-If you're curious about the JSON representation for more complicated  Plotly graphs, try the [https://plot.ly/feed/](Plotly feed).
+If you're curious about the JSON representations of more complicated Plotly graphs, try appending ".json" to the graph URL's on the [https://plot.ly/feed/](Plotly feed).
 
 ## Tasks
 
@@ -112,7 +62,7 @@ plot.postMessage(
         'https://plot.ly');
 ```
 
-<a name="relayout">#</a> task: **relayout**
+<a href="#relayout"name="relayout">#</a> task: **relayout**
 
 The relayout task changes the size, margins, and axes of a graph. See [Plotly's JSON representation](#plotlys-json-representation) above for how to pinpoint these attributes. The keys that can be changed through the relayout task are in the "layout" object. 
 
@@ -131,7 +81,7 @@ plot.postMessage(
         'https://plot.ly');
 ```
 
-<a name="hover">#</a> task: **hover**
+<a href="#hover" name="hover">#</a> task: **hover**
 
 Force a hover tag to display over a specific x,y point on the graph.
 
@@ -149,4 +99,117 @@ plot.postMessage(
             // 'subplot': 'xy' optional: for graphs with subplots, specify which subplot
         },
         'https://plot.ly');
+```
+
+<a href="#hover" name="hover">#</a> task: **hover**
+
+Force a hover tag to display over a specific x,y point on the graph.
+
+This example forces a hover tag to display at point (1,2) on the graph.
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot')[0].contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage(
+        {
+            'task': 'hover',
+            'selection': {xval: 1, yval: 2},
+            // 'subplot': 'xy' optional: for graphs with subplots, specify which subplot
+        },
+        'https://plot.ly');
+```
+
+<a href="#listen" name="listen">#</a> task: **listen**
+
+Add a listener to a single event or group of events (click, hover, or zoom).
+
+This example listens for a click, hover, or zoom then prints the event object in the browser console.
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot')[0].contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage(
+    {
+        task: 'listen',
+        events: ['zoom','click','hover']
+    }, 'https://plot.ly');
+
+window.addEventListener('message', function(e) {
+    var message = e.data;
+    alert(message.type);
+    console.log(message); // prints object for zoom, click, or hover event
+});
+```
+
+<a href="#addTraces" name="addTraces">#</a> task: **addTraces**
+
+Overwrites or adds data traces to a graph.
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot')[0].contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage(
+    {
+        task: 'addTraces',
+        traces: [{y: [2,1,2]}, {y: [2,4,5]}],
+        newIndices: [0, -1]
+    }, 'https://plot.ly');
+```
+
+<a href="#deleteTraces" name="deleteTraces">#</a> task: **deleteTraces**
+
+Removes traces from a graph by the trace index.
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot')[0].contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage(
+    {
+        task: 'deleteTraces',
+        indices: [0, 1]
+    }, 'https://plot.ly');
+```
+
+<a href="#moveTraces" name="moveTraces">#</a> task: **moveTraces**
+
+Change the order of traces in a graph.
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot')[0].contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage(
+    {
+        task: 'moveTraces',
+        currentIndices: [0, 1],
+        newIndices: [1, 0]
+    }, 'https://plot.ly');
+```
+
+<a href="#getLayout" name="getLayout">#</a> task: **getLayout**
+
+Get the full layout object of the graph (see [Plotly's JSON representation](#plotlys-json-representation) above).
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot')[0].contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage(
+    {
+        task: 'getLayout',
+    }, 'https://plot.ly');
+
+window.addEventListener('message', function(e) {
+    var message = e.data;
+    console.log(message);
+});
 ```
