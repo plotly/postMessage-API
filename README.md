@@ -88,7 +88,7 @@ The Embed API communicates with embedded graphs via a *task* identifier. Support
 * task: [ping](#ping) - returns "pong" if the graph is loaded, just used to tell when the listener is active
 * task: [redraw](#redraw) - forces a redraw of the graph
 
-<a id="restyle" name="restyle">#</a> task: **restyle**
+<a href="#restyle" name="restyle">#</a> task: **restyle**
 
 The restyle task changes attributes of the graph data - colors, type (ie bars versus points, scatter plot versus histogram), and the even values of the data. See [Plotly's JSON representation](#plotlys-json-representation) above for how to pinpoint these attributes. The keys that can be changed through the restyle task are in the "data" array. 
 
