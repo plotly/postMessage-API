@@ -13,9 +13,9 @@ The Embed API can be used to build custom controls that change anything about an
 
 The Embed API is the basis for communication between Plotly graphs and [IPython notebook widgets](http://moderndata.plot.ly/widgets-in-ipython-notebook-and-plotly/), as well as  planned support for [RStudio's Shiny](http://shiny.rstudio.com/) product. We're excited to see what else it built with it.
 
-If you want to play with the API, the first step is to create a Plotly graph or use someone else's. There are plenty of graphs with which you can experiment on the [https://plot.ly/feed/](Plotly feed).
+If you want to play with the API, the first step is to create a Plotly graph or use someone else's. There are plenty of graphs with which you can experiment on the [Plotly feed](https://plot.ly/feed/).
 
-Questions? Twitter [@plotlygraphs](https://twitter.com/plotlygraphs) or support[at]plot[dot]ly. Share with us what you've built. [Codepen](http://codepen.io/) is a great resource for messing with the API.
+Questions? Tweet us at [@plotlygraphs](https://twitter.com/plotlygraphs) or write us at support[at]plot[dot]ly. Share with us what you've built. [Codepen](http://codepen.io/) is a great resource for messing with the API.
 
 ## Plotly's JSON representation
 
@@ -25,7 +25,7 @@ For example, the JSON representation of the the graph with URL [https://plot.ly/
 
 You will need to reference the JSON representation in order to pinpoint the aspects of the graph you want to modify through the Embed API.
 
-If you're curious about the JSON representations of more complicated Plotly graphs, try appending ".json" to the graph URL's on the [https://plot.ly/feed/](Plotly feed).
+If you're curious about the JSON representations of more complicated Plotly graphs, try appending ".json" to the graph URL's on the [Plotly feed](https://plot.ly/feed/).
 
 ## Tasks
 
