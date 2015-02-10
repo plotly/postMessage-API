@@ -1,6 +1,10 @@
 # Embed-API
 *JavaScript API to embedded Plotly graphs*
 
+![Image of fractal widget](http://i.imgur.com/almE500.gif)
+
+[JSFiddle here](http://jsfiddle.net/alexcjohnson/kagz3byL/)
+
 ## Overview
 
 Plotly is making its JavaScipt API to Plotly graph embeds available and documented for users. This API can be used to build custom controls that change anything about an embedded Plotly graph - the graph type, colors, data, etc - *after* the graph is embedded in a webpage. 
@@ -213,3 +217,68 @@ window.addEventListener('message', function(e) {
     console.log(message);
 });
 ```
+
+<a href="#getAttributes" name="getAttributes">#</a> task: **getAttributes**
+
+Return a specific attribute from the top-level layout or data objects (see [Plotly's JSON representation](#plotlys-json-representation) above).
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot')[0].contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage(
+    {
+        task: 'getAttributes',
+    },  attributes: ['layout.title']
+
+window.addEventListener('message', function(e) {
+    var message = e.data;
+    console.log(message);
+});
+```
+
+<a href="#setAutosize" name="setAutosize">#</a> task: **setAutosize**
+
+If set to true, iframe will resize if placed in a container smaller than the original iframe dimensions.
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot')[0].contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage(
+        { task: 'setAutosize', 'value': true } );
+```
+
+<a href="#ping" name="ping">#</a> task: **ping**
+
+The ping task is just used to tell when the listener is active.
+
+```
+var pinger = setInterval(function(){
+    plot.postMessage({task: 'ping'}, 'https://plot.ly')
+}, 100);
+
+window.addEventListener('message', function(e) {
+    var message = e.data;
+    if(message.pong) {
+        console.log('Initial pong, frame is ready to receive');
+        clearInterval(pinger);
+        // Do some stuff, iframe is now ready to receive tasks
+    }
+});
+```
+
+<a href="#redraw" name="redraw">#</a> task: **redraw**
+
+Force a redraw of the graph contents.
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot')[0].contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage( { task: 'redraw' } );
+```
+
