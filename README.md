@@ -109,26 +109,6 @@ plot.postMessage(
         'https://plot.ly');
 ```
 
-<a href="#hover" name="hover">#</a> task: **hover**
-
-Force a hover tag to display over a specific x,y point on the graph.
-
-This example forces a hover tag to display at point (1,2) on the graph.
-
-```
-// Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
-
-// send a message to the contentWindow
-plot.postMessage(
-        {
-            'task': 'hover',
-            'selection': {xval: 1, yval: 2},
-            // 'subplot': 'xy' optional: for graphs with subplots, specify which subplot
-        },
-        'https://plot.ly');
-```
-
 <a href="#listen" name="listen">#</a> task: **listen**
 
 Add a listener to a single event or group of events (click, hover, or zoom).
