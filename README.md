@@ -7,9 +7,9 @@
 
 ## Overview
 
-Plotly is making its JavaScipt API to Plotly graph embeds available and documented for users. This API can be used to build custom controls that change anything about an embedded Plotly graph - the graph type, colors, data, etc - *after* the graph is embedded in a webpage. 
+Plotly is making its JavaScipt API to Plotly graph embeds a supported feature for advanced users. This API can be used to build custom controls that change anything about an embedded Plotly graph - the graph type, colors, data, etc - *after* the graph is embedded in a webpage. You can even start with a blank Plotly graph, then insert data and style it throught the Embed API.
 
-The Embed API is the basis for communication between Plotly graphs and [IPython notebook widgets](http://moderndata.plot.ly/widgets-in-ipython-notebook-and-plotly/), as well as  planned support for [RStudio's Shiny](http://shiny.rstudio.com/) product.
+The Embed API is the basis for communication between Plotly graphs and [IPython notebook widgets](http://moderndata.plot.ly/widgets-in-ipython-notebook-and-plotly/), as well as  planned support for [RStudio's Shiny](http://shiny.rstudio.com/) product. We're excited to see what else it built with it.
 
 If you want to play with the API, the first step is to create a Plotly graph or use someone else's. There are plenty of graphs with which you can experiment on the [https://plot.ly/feed/](Plotly feed).
 
@@ -69,6 +69,8 @@ plot.postMessage(
 <a href="#relayout"name="relayout">#</a> task: **relayout**
 
 The relayout task changes the size, margins, and axes of a graph. See [Plotly's JSON representation](#plotlys-json-representation) above for how to pinpoint these attributes. The keys that can be changed through the relayout task are in the "layout" object. 
+
+See [Layout objects](https://plot.ly/javascript-graphing-library/reference/#Layout_and_layout_style_objects) and [Axes objects](https://plot.ly/javascript-graphing-library/reference/#Axis_objects) for an exhaustive list of accepted key-value pairs that can be passed to the restyle task.
 
 This example changes the width of the graph to 500px and makes sure the legend is displayed.
 
