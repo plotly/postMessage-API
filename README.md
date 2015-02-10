@@ -7,7 +7,9 @@
 
 ## Overview
 
-Plotly is making its JavaScipt API to Plotly graph embeds a supported feature for advanced users. This API can be used to build custom controls that change anything about an embedded Plotly graph - the graph type, colors, data, etc - *after* the graph is embedded in a webpage. You can even start with a blank Plotly graph, then insert data and style it throught the Embed API.
+Plotly's JavaScipt API to graph embeds is now an officially supported feature for advanced users. 
+
+The Embed API can be used to build custom controls that change anything about an embedded Plotly graph - the graph type, colors, data, etc - *after* the graph is embedded in a webpage. You can even start with a blank Plotly graph, then insert data and style it throught the Embed API.
 
 The Embed API is the basis for communication between Plotly graphs and [IPython notebook widgets](http://moderndata.plot.ly/widgets-in-ipython-notebook-and-plotly/), as well as  planned support for [RStudio's Shiny](http://shiny.rstudio.com/) product. We're excited to see what else it built with it.
 
