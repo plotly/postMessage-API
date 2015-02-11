@@ -5,7 +5,7 @@
 
 [JSFiddle here](http://jsfiddle.net/alexcjohnson/kagz3byL/)
 
-[Image of data widget](http://i.imgur.com/XAl83lJ.gif?1)
+![Image of data widget](http://i.imgur.com/XAl83lJ.gif?1)
 
 [Codepen here](http://codepen.io/jackp/pen/ogpGbL?editors=101)
 
