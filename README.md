@@ -5,6 +5,10 @@
 
 [JSFiddle here](http://jsfiddle.net/alexcjohnson/kagz3byL/)
 
+[Image of data widget](http://i.imgur.com/XAl83lJ.gif?1)
+
+[Codepen here](http://codepen.io/jackp/pen/ogpGbL?editors=101)
+
 ## Overview
 
 Plotly's JavaScipt API to graph embeds is now an officially supported feature for advanced users. 
@@ -72,6 +76,20 @@ plot.postMessage(
             'indices': [1]
         },
         'https://plot.ly');
+```
+
+Here's the syntax to update the data in a graph with 2 traces, where X, X1, Y, and Y1 are numeric arrays.
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot').contentWindow;
+
+// send a message to the contentWindow
+plot.postMessage(
+        {
+            task:'restyle',
+            update:{x:[X,X1],y:[Y,Y1]}
+        }, 'https://plot.ly');   
 ```
 
 <a href="#relayout"name="relayout">#</a> task: **relayout**
@@ -225,6 +243,32 @@ plot.postMessage(
 window.addEventListener('message', function(e) {
     var message = e.data;
     console.log(message);
+});
+```
+
+Here's the syntax to get x,y data arrays in a graph with 2 traces.
+
+```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot').contentWindow;
+
+var X, Y, X1, Y1;
+
+// get current x, y data
+plot.postMessage({
+    task: 'getAttributes',
+    attributes: [
+        'data[0].x','data[0].y',
+        'data[1].x','data[1].y'
+    ] },
+    'https://plot.ly/');
+
+window.addEventListener('message', function(e) {
+    var message = e.data;
+    X = message.response['data[0].x'];
+    Y = message.response['data[0].y'];
+    X1 = message.response['data[1].x'];
+    Y1 = message.response['data[1].y']; 
 });
 ```
 
