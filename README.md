@@ -62,7 +62,7 @@ This example changes the y-values data of the second trace to 2 and the color of
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
@@ -84,7 +84,7 @@ This example changes the width of the graph to 500px and makes sure the legend i
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
@@ -103,7 +103,7 @@ This example forces a hover tag to display at point (1,2) on the graph.
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
@@ -122,7 +122,7 @@ Add a listener to a single event or group of events (click, hover, or zoom).
 This example listens for a click, hover, or zoom then prints the event object in the browser console.
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
@@ -144,7 +144,7 @@ Overwrites or adds data traces to a graph.
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
@@ -161,7 +161,7 @@ Removes traces from a graph by the trace index.
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
@@ -177,7 +177,7 @@ Change the order of traces in a graph.
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
@@ -194,7 +194,7 @@ Get the full layout object of the graph (see [Plotly's JSON representation](#plo
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
@@ -214,13 +214,13 @@ Return a specific attribute from the top-level layout or data objects (see [Plot
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
     {
         task: 'getAttributes',
-    },  attributes: ['layout.title']
+        attributes: ['layout.title'] }, 'https://plot.ly' );
 
 window.addEventListener('message', function(e) {
     var message = e.data;
@@ -234,7 +234,7 @@ If set to true, iframe will resize if placed in a container smaller than the ori
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
@@ -246,6 +246,9 @@ plot.postMessage(
 The ping task is just used to tell when the listener is active.
 
 ```
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot').contentWindow;
+
 var pinger = setInterval(function(){
     plot.postMessage({task: 'ping'}, 'https://plot.ly')
 }, 100);
@@ -266,7 +269,7 @@ Force a redraw of the graph contents.
 
 ```
 // Grab the embed's contentWindow by the iframe id
-var plot = document.getElementById('plot')[0].contentWindow;
+var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage( { task: 'redraw' } );
