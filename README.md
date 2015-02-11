@@ -13,7 +13,13 @@ The Embed API can be used to build custom controls that change anything about an
 
 The Embed API is the basis for communication between Plotly graphs and [IPython notebook widgets](http://moderndata.plot.ly/widgets-in-ipython-notebook-and-plotly/), as well as  planned support for [RStudio's Shiny](http://shiny.rstudio.com/) product. We're excited to see what else will be built with it.
 
-If you want to play with the API, the first step is to create a Plotly graph or use someone else's. There are plenty of graphs with which you can experiment on the [Plotly feed](https://plot.ly/feed/).
+If you want to play with the API, the first step is to create a Plotly graph or use someone else's, then embed it in [Codepen](http://codepen.io/) or a webpage [as an iframe](https://plot.ly/how-to-embed-plotly-graphs-in-websites/#fallback). There are plenty of graphs with which you can experiment on the [Plotly feed](https://plot.ly/feed/).
+
+Plotly embeds typically have this HTML format:
+
+```
+<iframe width="640" height="480" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~Dreamshot/411.embed?width=640&height=480" ></iframe>
+```
 
 Questions? Tweet us at [@plotlygraphs](https://twitter.com/plotlygraphs) or write us at support[at]plot[dot]ly. Share with us what you've built. [Codepen](http://codepen.io/) is a great resource for messing with the API.
 
