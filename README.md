@@ -195,13 +195,6 @@ plot.postMessage(
         task: 'deleteTraces',
         indices: [-1]
     }, 'https://plot.ly');
-
-// send a message to the contentWindow to delete all remaining traces
-plot.postMessage(
-    {
-        task: 'deleteTraces',
-        indices: 'all'
-    }, 'https://plot.ly');
 ```
 
 <a href="#moveTraces" name="moveTraces">#</a> task: **moveTraces**
