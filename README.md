@@ -297,7 +297,7 @@ var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
-        { task: 'setAutosize', 'value': true } );
+        {task: 'setAutosize', 'value': true}, 'https://plot.ly');
 ```
 
 <a href="#ping" name="ping">#</a> task: **ping**
@@ -331,7 +331,8 @@ Force a redraw of the graph contents.
 var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
-plot.postMessage( { task: 'redraw' } );
+plot.postMessage({task: 'redraw'}, 'https://plot.ly');
+```
 
 <a href="#newPlot" name="newPlot">#</a> task: **newPlot**
 
