@@ -53,6 +53,7 @@ The Embed API communicates with embedded graphs via a *task* identifier. Support
 * task: [setAutosize](#setAutosize) - does the graph redraw when the window is resized?
 * task: [ping](#ping) - returns "pong" if the graph is loaded, just used to tell when the listener is active
 * task: [redraw](#redraw) - forces a redraw of the graph
+* task: [newPlot](#newPlot) - idempotent plotting function, replaces existing Plotly plot with new one
 
 <a href="#restyle" name="restyle">#</a> task: **restyle**
 
@@ -181,11 +182,18 @@ Removes traces from a graph by the trace index.
 // Grab the embed's contentWindow by the iframe id
 var plot = document.getElementById('plot').contentWindow;
 
-// send a message to the contentWindow
+// send a message to the contentWindow to delete traces at indices 0 and 1
 plot.postMessage(
     {
         task: 'deleteTraces',
         indices: [0, 1]
+    }, 'https://plot.ly');
+
+// send a message to the contentWindow to delete the last trace
+plot.postMessage(
+    {
+        task: 'deleteTraces',
+        indices: [-1]
     }, 'https://plot.ly');
 ```
 
@@ -282,7 +290,7 @@ var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
 plot.postMessage(
-        { task: 'setAutosize', 'value': true } );
+        {task: 'setAutosize', 'value': true}, 'https://plot.ly');
 ```
 
 <a href="#ping" name="ping">#</a> task: **ping**
@@ -316,6 +324,22 @@ Force a redraw of the graph contents.
 var plot = document.getElementById('plot').contentWindow;
 
 // send a message to the contentWindow
-plot.postMessage( { task: 'redraw' } );
+plot.postMessage({task: 'redraw'}, 'https://plot.ly');
+```
+
+<a href="#newPlot" name="newPlot">#</a> task: **newPlot**
+
+Idempotent plot command to created new plotly Plot with `data` and `layout` attributes.
+
+```javascript
+// Grab the embed's contentWindow by the iframe id
+var plot = document.getElementById('plot').contentWindow;
+
+// send a message to the contentWindow to replace the existing plot
+plot.postMessage({
+    task: 'newPlot',
+    data: [{y: [2, 5, 1, 2], type: 'bar'}, {y: [2, 5, 1, 2], type: 'scatter'}],
+    layout: {title: 'new plot'}
+}, 'https://plot.ly');
 ```
 
