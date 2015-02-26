@@ -11,19 +11,24 @@
 
 ## Embed API Hall of fame
 
-Mandelbrot explorer - *Binds to zoom event to recalculate Mandelbrot set after zooming-in (click-drag to zoom)*
+**Mandelbrot explorer**
+Binds to zoom event to recalculate Mandelbrot set after zooming-in (click-drag to zoom)
 [http://codepen.io/alexcjohnson/full/KwQWYo](http://codepen.io/alexcjohnson/full/KwQWYo)
 
-IMDB movie explorer - *Interactively explore the IMBD movie database*
+**IMDB movie explorer**
+Interactively explore the IMBD movie database
 [http://codepen.io/theengineear/pen/ogEzZO](http://codepen.io/theengineear/pen/ogEzZO)
 
-Changing colors - *Change the fill color of an area plot*
+**Changing colors**
+Change the fill color of an area plot
 [http://codepen.io/anon/pen/ZYrbwK](http://codepen.io/anon/pen/ZYrbwK)
 
-Rose plot explorer - *Dynamically change the parameters of a rose plot*
+**Rose plot explorer**
+Dynamically change the parameters of a rose plot
 [http://codepen.io/etpinard/pen/vEdmgg](http://codepen.io/etpinard/pen/vEdmgg)
 
-Plotly-Shiny integration - *Integration with the popular Shiny framework for R*
+**Plotly-Shiny integration**
+Integration with the popular Shiny framework for R
 [https://github.com/chriddyp/plotly-shiny](https://github.com/chriddyp/plotly-shiny)
 
 
