@@ -1,4 +1,4 @@
-# Embed-API
+# postMessage API
 *JavaScript API to embedded Plotly graphs*
 
 ![Image of fractal widget](http://i.imgur.com/almE500.gif)
