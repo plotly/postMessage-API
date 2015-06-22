@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<title>Interactive my_graph</title>
+<head>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/base-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <meta name="description" content="Interactively view x, y slices through my_graphs and contour plots online with Plotly.">
+</head>
+
+<body style="font-family: 'Open Sans', serif; background: #edf1f8">
+    <a href="https://github.com/plotly/postMessage-API"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+    <div class="pure-g">
+        <div class="pure-u-7-24">
+            <div style="margin: 0 2em 0; text-align: left; margin-top: 100px;">
+                <h1 style="text-transform: uppercase; color: #447bdc;">
+                    Bind Custom Client-Side to Plotly Graphs
+                </h1>
+
+                <p style="font-weight: 300; color: #1d3b84; opacity: 0.5">
+                    Open your console and try a few things:<br>
+                    1 - Click, hover, or zoom on points in the my_graph. You'll see the messages printed and you can add
+                    custom callbacks to these events.<br><br>
+                    2 - Make new plots on the client with the postMessage API:
+<pre style="font-size: 0.75em;"><code>
+    graphs.my_graph.graphContentWindow.postMessage({
+        'task': 'newPlot',
+        'data': [
+        {
+            'x': [1,2,3],
+            'y': [10,20,30],
+            'type': 'scatter'
+        }],
+        'layout': {'title': 'new title'}
+    }, 'https://plot.ly')</code></pre>
+                </p>
+            </div>
+        </div>
+
+        <div class="pure-u-17-24">
+            <iframe id="my_graph"
+                    src="https://plot.ly/~chris/5496.embed"
+                    style="width:100%; height:600px; border:none"
+                    seamless>
+            </iframe>
+        </div>
+    </div>
+
+<script type="text/javascript" charset="utf-8">
+
+// Boiler-Plate Plotly Embed Code
+
+function init_graph_obj(id){
+    var obj = {
+        graphContentWindow: $('#'+id)[0].contentWindow,
+        id: id
+    };
+    obj.pinger = setInterval(function(){
+        obj.graphContentWindow.postMessage({task: 'ping'}, 'https://plot.ly');
+    }, 500);
+    return obj;
+}
+
+var graphs = {};
+
+$('iframe').each(function(i, obj){
+    graphs[obj.id] = init_graph_obj(obj.id);
+});
+
+// Window "message"s are messages that originate from the embedded iFrames,
+// like "pong", zoom, click, and hover.
+window.addEventListener('message', function(e){
+    var message = e.data;
+    var graph;
+    for(var i in graphs) {
+        if(graphs[i].graphContentWindow === e.source) {
+            graph = graphs[i];
+        }
+    }
+    if(typeof graph === "undefined") {
+        return;
+    }
+
+    var pinger = graph.pinger;
+    var graphContentWindow = graph.graphContentWindow;
+    var id = graph.id;
+
+    if('pong' in message && message.pong) {
+        clearInterval(pinger);
+        graphContentWindow.postMessage({
+            'task': 'listen',
+            'events': ['click', 'hover', 'zoom'] // Customize events here
+        }, 'https://plot.ly');
+    } else if (message.type==='hover' ||
+                message.type==='zoom'  ||
+                message.type==='click') {
+
+        console.log(id, '-->', message);
+    }
+});
+
+</script>
+
+</body>
+
+</html>
