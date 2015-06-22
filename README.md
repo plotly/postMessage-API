@@ -60,6 +60,9 @@ You will need to reference the JSON representation in order to pinpoint the aspe
 
 If you're curious about the JSON representations of more complicated Plotly graphs, try appending ".json" to the graph URL's on the [Plotly feed](https://plot.ly/feed/).
 
+## Getting Started
+[Hello World](https://github.com/plotly/postMessage-API/blob/master/hello_world.html#L52-L117) contains boiler plate code for initalizing postMessage listeners and posting messages. [Interact with the example.](http://help.plot.ly/postMessage-API/)
+
 ## Tasks
 
 The Embed API communicates with embedded graphs via a *task* identifier. Supported tasks are:
