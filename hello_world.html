@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<title>Interactive my_graph</title>
+<title>Plotly postMessage API</title>
 <head>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
@@ -49,7 +49,23 @@
 
 <script type="text/javascript" charset="utf-8">
 
-// Boiler-Plate Plotly Embed Code
+/*
+Boiler-Plate Plotly Embed Code
+Create a `graphs` object that adds listeners to every embedded iFrame
+and provides graphContentWindow for posting messages to, e.g.
+
+graphs.my_graph.graphContentWindow.postMessage({
+    'task': 'newPlot',
+    'data': [
+    {
+        'x': [1,2,3],
+        'y': [10,20,30],
+        'type': 'scatter'
+    }],
+    'layout': {'title': 'new title'}
+}, 'https://plot.ly');
+*/
+
 
 function init_graph_obj(id){
     var obj = {
