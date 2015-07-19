@@ -9,7 +9,7 @@
 
 [Codepen here](http://codepen.io/jackp/pen/ogpGbL?editors=101)
 
-## Embed API Hall of fame
+## postMessage API examples
 
 **Mandelbrot explorer**<br />
 Binds to zoom event to recalculate Mandelbrot set after zooming-in (click-drag to zoom) <br />
@@ -36,9 +36,9 @@ Integration with the popular Shiny framework for R <br />
 
 Plotly's JavaScipt API to graph embeds is now an officially supported feature for advanced users. 
 
-The Embed API can be used to build custom controls that change anything about an embedded Plotly graph - the graph type, colors, data, etc - *after* the graph is embedded in a webpage. You can even start with a blank Plotly graph, then insert data and style it throught the Embed API.
+The postMessage API can be used to build custom controls that change anything about an embedded Plotly graph - the graph type, colors, data, etc - *after* the graph is embedded in a webpage. You can even start with a blank Plotly graph, then insert data and style it throught the postMessage API.
 
-The Embed API is the basis for communication between Plotly graphs and [IPython notebook widgets](http://moderndata.plot.ly/widgets-in-ipython-notebook-and-plotly/), as well as with [RStudio's Shiny](https://github.com/chriddyp/plotly-shiny) product. We're excited to see what else will be built with it.
+The postMessage API is the basis for communication between Plotly graphs and [IPython notebook widgets](http://moderndata.plot.ly/widgets-in-ipython-notebook-and-plotly/), as well as with [RStudio's Shiny](https://github.com/chriddyp/plotly-shiny) product. We're excited to see what else will be built with it.
 
 If you want to play with the API, the first step is to create a Plotly graph or use someone else's, then embed it in [Codepen](http://codepen.io/) or a webpage [as an iframe](https://plot.ly/how-to-embed-plotly-graphs-in-websites/#fallback). There are plenty of graphs with which you can experiment on the [Plotly feed](https://plot.ly/feed/).
 
@@ -56,7 +56,7 @@ Plotly encodes all graphs into a text-based JSON format from which the graph is 
 
 For example, the JSON representation of the the graph with URL [https://plot.ly/~PlotBot/80](https://plot.ly/~PlotBot/80) is [https://plot.ly/~PlotBot/80.json](https://plot.ly/~PlotBot/80.json).
 
-You will need to reference the JSON representation in order to pinpoint the aspects of the graph you want to modify through the Embed API.
+You will need to reference the JSON representation in order to pinpoint the aspects of the graph you want to modify through the postMessage API.
 
 If you're curious about the JSON representations of more complicated Plotly graphs, try appending ".json" to the graph URL's on the [Plotly feed](https://plot.ly/feed/).
 
@@ -65,7 +65,7 @@ If you're curious about the JSON representations of more complicated Plotly grap
 
 ## Tasks
 
-The Embed API communicates with embedded graphs via a *task* identifier. Supported tasks are:
+The postMessage API communicates with embedded graphs via a *task* identifier. Supported tasks are:
 
 * task: [restyle](#restyle) - change attributes of the graph's data
 * task: [relayout](#relayout) - change attributes of the graph size, margins, and axes
