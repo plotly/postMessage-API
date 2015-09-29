@@ -87,7 +87,7 @@ The restyle task changes attributes of the graph data - colors, type (ie bars ve
 
 If you have several traces (several lines for a line chart, a stacked bar chart, etc), you can specify a trace index to target the data trace you want to restyle. 
 
-See [Trace objects](https://plot.ly/javascript-graphing-library/reference/#Trace_objects) and [Trace auxilliary objects](https://plot.ly/javascript-graphing-library/reference/#Trace_auxiliary_objects) for an exhaustive list of accepted key-value pairs that can be passed to the restyle task.
+See [Trace objects](https://plot.ly/javascript-graphing-library/reference/#Trace_objects) and [Trace auxiliary objects](https://plot.ly/javascript-graphing-library/reference/#Trace_auxiliary_objects) for an exhaustive list of accepted key-value pairs that can be passed to the restyle task.
 
 This example changes the y-values data of the second trace to 2 and the color of the points to red.
 
