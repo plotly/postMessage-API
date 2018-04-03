@@ -119,7 +119,7 @@ plot.postMessage(
         }, 'https://plot.ly');   
 ```
 
-<a href="#relayout"name="relayout">#</a> task: **relayout**
+<a href="#relayout" name="relayout">#</a> task: **relayout**
 
 The relayout task changes the size, margins, and axes of a graph. See [Plotly's JSON representation](#plotlys-json-representation) above for how to pinpoint these attributes. The keys that can be changed through the relayout task are in the "layout" object. 
 
